@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="sk">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="https://openlayers.org/favicon.ico" />
+  <link rel="stylesheet" href="style-reset.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/eeefa9e1cc.js" crossorigin="anonymous"></script>
+  <title>Mapová aplikácia</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-content">
+        <h2>Mapové vrstvy</h2>
+        <ul class="layers-list">
+          <li class="layers-btns">
+            <input type="checkbox" id="wms-geolog-wells" value="GeologicalWells">
+            <label for="wms-geolog-wells">Geologické vrty</label>
+            <div class="legend-geolog-wells">
+              <h3>Legenda</h3>
+              <img
+                src="https://ags.geology.sk/arcgis/services/WebServices/VRTY/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&FORMAT=image/png&LAYER=0"
+                alt="Legenda vrstvy: Geologické vrty">
+            </div>
+          </li>
+          <li class="layers-btns">
+            <input type="checkbox" id="wms-water-bodies" value="WaterBodies">
+            <label for="wms-water-bodies">Útvary povrchových vôd</label>
+            <div class="legend-water-bodies">
+              <h3>Legenda</h3>
+              <div class="legend-water-bodies-description">
+                <img
+                  src="https://geoserver.vuvh.sk/arcgis/services/INSPIRE/PD_WFDLakes/MapServer/WMSServer?SERVICE=WMS&VERSION=1.3.0&REQUEST=GetLegendGraphic&FORMAT=image/png&LAYER=LAKES"
+                  alt="Legenda vrstvy: Vodné plochy">
+                <span>Vodné plochy</span>
+              </div>
+            </div>
+          </li>
+          <li class="layers-btns">
+            <input type="checkbox" id="geojson-countries" value="GeoJsonCountries">
+            <label for="geojson-countries">Hranice štátov</label>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <div id="map">
+      <button class="sidebar-hide-btn"><i class="fa-solid fa-arrow-left"></i></button>
+      <div class="search-result-container">
+        <form class="search-container">
+          <input type="text" id="search-input" placeholder="Hľadaj">
+          <button id="remove-btn" type="button"><i class="fa-solid fa-xmark"></i></button>
+          <button id="search-btn" type="submit"><i class="fa-solid fa-magnifying-glass-location"></i></button>
+        </form>
+        <div class="result-list-container">
+          <ul id="result-list"></ul>
+        </div>
+      </div>
+      <div class="poly-container">
+        <div class="poly-btns">
+          <button id="create-poly"><i class="fa-solid fa-draw-polygon"></i></button>
+          <button id="remove-poly"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="popup-container">
+    <button class="popup-close-btn"><i class="fa-solid fa-xmark"></i></button>
+    <div class="popup-text-container">
+      <span class="popup-text" id="feature-name"></span>
+      <span class="popup-text" id="feature-additional-info"></span>
+    </div>
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>
