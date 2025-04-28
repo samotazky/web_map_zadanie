@@ -445,7 +445,7 @@ removePoly.addEventListener("click", () => {
 
 loadAllWFSPoints(map.getView().getProjection());
 
-
+// Funkcia skryť sidebar
 const wrapper = document.querySelector(".wrapper");
 const sidebar = document.querySelector(".sidebar")
 const sidebarHideBtn = document.querySelector(".sidebar-hide-btn")
